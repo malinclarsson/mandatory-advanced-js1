@@ -12,10 +12,10 @@ body{
 .main{
   width: 300px;
   height: 520px;
-  border: 1px solid #878787;
   margin-left: 10px;
   padding: 5px;
   padding-bottom: 3px;
+  border: 1px solid #878787;
   overflow-x: auto;
   border-radius: 0px 0px 5px 5px;
   word-break: break-all;
@@ -23,55 +23,59 @@ body{
 
 
 /*=============== login ===============*/
-.loginWindow{ /* <-- login*/                             
+.loginWindow{ 
+  width: 300px;
+  height: 520px;
+  padding: 40px;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  background: white;                           
   position: absolute;
   left: 50%;
   top: 50px;
-  transform: translate(-50%, 0%);
-  width: 300px;
-  height: 520px;
-  border: 1px solid #d3d3d3;
-  padding: 40px;
-  border-radius: 5px;
-  background: white;
   box-shadow: 3px 6px 18px 0px rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, 0%);
 }
-.loginTitle{ /* <-- login title*/
-  margin-top: 20%;
+.loginTitle{
   font-size: 20px;
+  margin-top: 20%;
   margin-left: 20%;
 }
-.loginInput{ /* <-- login input-field*/
+
+.loginInput{
   width: 150px;
   height: 25px;
-  margin-left: 15%;
-  border-radius: 5px;
-  outline: none;
-  border: 1px solid #d3d3d3;
   font-size: 18px;
   padding: 3px;
+  margin-left: 15%;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  outline: none;
 }
-.loginButton{ /* <-- login button*/
-  position: relative;
-  top: -2px;
-  margin-left: 3px;
+
+.logInButton{
   width: 50px;
   height: 34px;
-  border-radius: 5px;
-  border: none;
-  background-color: #878787;
+  margin-left: 3px;
   color: white;
+  background-color: #878787;
+  border: none;
+  border-radius: 5px;
+  position: relative;
+  top: -2px;
   outline: none;
   cursor: pointer;
 }
-.loginButton:hover{
+.logInButton:hover{
  background-color: #565555;
 
 }
-.loginButton:disabled{
+.logInButton:disabled{
   background-color: #d3d3d3;
   color: white;
 }
+
+
 .validation{ /* <-- login rules*/
   color: grey;
   font-size: 12px;
@@ -80,7 +84,7 @@ body{
 
 
 /*=============== chat-window -header ===============*/
-.mainHeader{ /* chat window-header*/
+.mainHeader{
   width: 300px;
   height: 40px;
   background: white;
@@ -93,71 +97,75 @@ body{
   border-radius: 5px 5px 0px 0px;
   box-shadow: 3px 6px 18px 0px rgba(0, 0, 0, 0.2);
 }
-.mainChatName{ /* username*/
-  position: absolute;
+
+.chatUserName{
   right: 100px;
   color: #252c24;
-}
-.logOutButton{ /* logout button*/
   position: absolute;
-  right: 10px;
-  border-radius: 5px;
+}
+
+.logOutButton{
   width: 60px;
   height: 25px;
-  border: none;
-  background-color: #878787;
   color: white;
+  background-color: #878787;
+  border: none;
+  border-radius: 5px;
+  position: absolute;
+  right: 10px;
   outline: none;
   cursor: pointer;
 }
 .logOutButton:hover{ 
   background-color: #565555;
 }
+
 /*=============== chat-window ===============*/
 .main.window{
   background-color: white;
   box-shadow: 3px 6px 18px 0px rgba(0, 0, 0, 0.2);
 }
-.userName{ /* other users*/
+
+.userName{
   color: #565555;
-  
 }
-.messTime{ /* timestamp*/
-  position: relative;
+
+.timestamp{
   color: #d3d3d3;
   font-size: 12px;
+  position: relative;
 }
 
 
 /*=============== chat ===============*/
-.inputText{ /* chat input*/
-  margin-left: 10px;
+.inputText{
   width: 250px;
   height: 50px;
-  outline: none;
-  border: 1px solid #d3d3d3;
-  margin-top: 5px;
-  resize: none;
   font-size: 16px;
-  border-radius: 5px;
   background: white;
+  margin-left: 10px;
+  margin-top: 5px;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  outline: none;
   box-shadow: 3px 6px 18px 0px rgba(0, 0, 0, 0.2);
+  resize: none;
 }
 
-.sendBtn{ /* chat button*/
-  position: absolute;
-  margin-top: 5px;
-  margin-left: 5px;
+.sendBtn{
   width: 50px;
   height: 55px;
-  border: none;
-  background-color: #878787;
-  color: white;
-  border-radius: 5px;
-  outline: none;
   font-size: 15px;
-  cursor: pointer;
+  color: white;
+  background-color: #878787;
+  margin-top: 5px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 5px;
+  position: absolute;
+  outline: none;
   box-shadow: 3px 6px 18px 0px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 .sendBtn:hover{
   background-color: #565555;

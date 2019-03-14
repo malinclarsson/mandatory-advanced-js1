@@ -5,37 +5,48 @@ import { loginObj } from './login';
 import {emojify} from 'react-emojione';
 
 
+
+
 //=============== emojis ===============//
-function convertUrlEmoji(str){
+function convertEmoji(str){
   let options = {};
   let content = emojify(str);
-  return <Linkify tagName="span" options={options}>{content}</Linkify>;
+  return <Link tagName="span" options={options}>{content}</Link>;
     }
 
 //=============== URL:s ===============//
-const Linkify = require('linkifyjs/react');
+const Link = require('linkifyjs/react');
 
-//===============  ===============//
-function scrollBottom(){
+
+
+//=============== scrolls down to latest message ===============//
+function scrollDown(){
   let element = document.querySelector(".main");
       element.scrollTop = element.scrollHeight;
 }
 
-//===============  ===============//
-function Unix_timestamp(t){
-  let ts = new Date(t);
-  return ts.toLocaleString() + " ";
+
+
+//=============== timestamp ===============//
+function Timestamp(t){
+  let now = new Date(t);
+  return now.toLocaleString() + " ";
 }
-//===============  ===============//
-function createUser(str) {
+
+
+
+//=============== new messege ===============//
+function newChatBubble(str) {
   return (
   <div key={str.id}><br/>
-  <span className="messTime"><b>{Unix_timestamp(str.timestamp)}</b></span><br/>
+  <span className="timestamp"><b>{Timestamp(str.timestamp)}</b></span><br/>
   <span className="userName"><b>{str.username + ":    "}</b></span>
-  <span className="userMess">{convertUrlEmoji(str.content)}</span>
+  <span className="userMess">{convertEmoji(str.content)}</span>
   </div>
   );
 }
+
+
 
 //=============== chat-content ===============//
 class Chat extends Component {                                            
@@ -51,7 +62,11 @@ class Chat extends Component {
     },
   ]};
 }
-//===============  ===============//
+
+
+
+
+//=============== "when component changed" ===============//
   componentDidMount() {
     document.title = 'CHAT';
     this.socket = io('http://ec2-13-53-66-202.eu-north-1.compute.amazonaws.com:3000');
@@ -64,15 +79,15 @@ class Chat extends Component {
    }.bind(this));
   }
   componentDidUpdate() {
-    scrollBottom();
+    scrollDown();
 }
   componentWillUnmount(){
     this.socket.disconnect();
     this.socket = null;
 }
+  
 
-//===============  ===============//
-  onChange = (e) => this.setState({content:e.target.value});
+
 
 //=============== input - textarea ===============//
   onClick = () => {
@@ -91,17 +106,25 @@ class Chat extends Component {
       textarea.placeholder = "Write SOMETHING";
     }
   }
-  //===============  ===============//
+  
+  onChange = (e) => this.setState({content:e.target.value});
+
+  
+
+
+
+
+  //=============== render ===============//
   render() {
     return (
     <div className="root">
-
+      
       <div className="mainHeader">                                        
         <span className="mainChatName"><b>Username:</b> {this.state.username}</span> 
         <button onClick={this.props.onOut} className="logOutButton" title="Logout">Logout</button>
       </div>
 
-    <div className="main window">{this.state.messages.map(createUser)}</div>    
+    <div className="main window">{this.state.messages.map(newChatBubble)}</div>    
     <textarea maxLength="200" placeholder="Message" className="inputText" type="text"
               onChange={this.onChange} onKeyDown={this.onEnterPress}/>
     <button onClick={this.onClick} className="sendBtn">Send</button>  
@@ -110,4 +133,6 @@ class Chat extends Component {
   }
 }
 
+
+//=============== export ===============//
 export default Chat;
